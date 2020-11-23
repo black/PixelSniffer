@@ -49,6 +49,6 @@ app.get("/updates", (req, res) => {
         console.log({
             data
         });
-        res.write("data: " + `${data}` + '\n\n');
+        res.write("data: " + data + '\n\n');
     });
 });
