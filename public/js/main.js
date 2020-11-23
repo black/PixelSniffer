@@ -4,10 +4,10 @@ sse.onmessage = (res) => {
     let elm = document.getElementById("myUl")
     let data = res.data.split(",")
     elm.innerHTML = "";
-    data.forEach(function (item) {
+    data.forEach(function (item, i) {
         var li = document.createElement("li");
         var text = document.createTextNode(item);
-        li.appendChild(text);
+        li.appendChild(i + " : " + text);
         elm.appendChild(li);
     });
 };
