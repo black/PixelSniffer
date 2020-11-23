@@ -6,8 +6,8 @@ sse.onmessage = (res) => {
     elm.innerHTML = "";
     data.forEach(function (item, i) {
         var li = document.createElement("li");
-        var text = document.createTextNode(item);
-        li.appendChild(i + " : " + text);
+        var text = document.createTextNode(i + " : " + item);
+        li.appendChild(text);
         elm.appendChild(li);
     });
 };
