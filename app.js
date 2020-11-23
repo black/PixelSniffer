@@ -2,6 +2,7 @@ const express = require("express")
 const bodyParser = require("body-parser")
 const EventEmitter = require('events')
 const app = express()
+const PORT = 1000
 const myEmitter = new EventEmitter()
 
 app.use(express.static('public'))
@@ -9,28 +10,22 @@ app.use(bodyParser.urlencoded({
     extended: false
 }))
 app.use(bodyParser.json())
-// app.use((req, res, next) => {
-//     res.header('Access-Control-Allow-Origin', '*');
-//     if (req.method === 'OPTIONS') {
-//         var headers = {};
-//         headers["Access-Control-Allow-Origin"] = "*";
-//         headers["Access-Control-Allow-Methods"] = "POST, GET, PUT, DELETE, OPTIONS";
-//         headers["Access-Control-Allow-Credentials"] = false;
-//         headers["Access-Control-Max-Age"] = '86400'; // 24 hours
-//         res.writeHead(200, headers);
-//         res.end();
-//     } else {
-//         next();
-//     }
-// });
+app.use((req, res, next) => {
+    res.header('Access-Control-Allow-Origin', '*');
+    if (req.method === 'OPTIONS') {
+        var headers = {};
+        headers["Access-Control-Allow-Origin"] = "*";
+        headers["Access-Control-Allow-Methods"] = "POST, GET, PUT, DELETE, OPTIONS";
+        headers["Access-Control-Allow-Credentials"] = false;
+        headers["Access-Control-Max-Age"] = '86400'; // 24 hours
+        res.writeHead(200, headers);
+        res.end();
+    } else {
+        next();
+    }
+});
 
-// app.listen(PORT, () => console.log(`🚀 Server running on port ${PORT}`))
-
-// app.get('/', (req, res) => {
-//     res.send({
-//         msg: 'success'
-//     })
-// });
+app.listen(PORT, () => console.log(`🚀 Server running on port ${PORT}`))
 
 app.get("/:id/onepixel.png", (req, res) => {
     let id = req.params.id;
