@@ -1,5 +1,5 @@
-// let sse = new EventSource("https://pixelxniffer.herokuapp.com/updates");
-let sse = new EventSource("http://localhost:1000/updates");
+let sse = new EventSource("https://pixelxniffer.herokuapp.com/updates");
+// let sse = new EventSource("http://localhost:1000/updates");
 sse.onmessage = (res) => {
     let elm = document.getElementById("myUl")
     let data = res.data.split(",")
