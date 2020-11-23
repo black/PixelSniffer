@@ -2,7 +2,6 @@ const express = require("express")
 const bodyParser = require("body-parser")
 const EventEmitter = require('events')
 const app = express()
-const PORT = 1000
 const myEmitter = new EventEmitter()
 
 app.use(express.static('public'))
@@ -25,7 +24,7 @@ app.use(bodyParser.json())
 //     }
 // });
 
-app.listen(PORT, () => console.log(`🚀 Server running on port ${PORT}`))
+// app.listen(PORT, () => console.log(`🚀 Server running on port ${PORT}`))
 
 app.get("/:id/onepixel.png", (req, res) => {
     let id = req.params.id;
