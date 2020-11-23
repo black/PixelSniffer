@@ -1,4 +1,6 @@
 let sse = new EventSource("https://pixelxniffer.herokuapp.com/updates");
 sse.onmessage = (res) => {
-    document.getElementById("data-container").textContent = res.data;
+    for (id of res.data) {
+        document.getElementById("data-container").textContent = id;
+    }
 };
