@@ -26,11 +26,11 @@ app.use(bodyParser.json())
 
 // app.listen(PORT, () => console.log(`🚀 Server running on port ${PORT}`))
 
-app.get('/', (req, res) => {
-    res.send({
-        msg: 'success'
-    })
-});
+// app.get('/', (req, res) => {
+//     res.send({
+//         msg: 'success'
+//     })
+// });
 
 app.get("/:id/onepixel.png", (req, res) => {
     let id = req.params.id;
