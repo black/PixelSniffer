@@ -27,8 +27,11 @@ app.use((req, res, next) => {
 
 app.listen(process.env.PORT || PORT, () => console.log(`🚀 Server running on port ${PORT}`))
 
+let trackers = [];
+
 app.get("/:id/onepixel.png", (req, res) => {
     let id = req.params.id;
+    trackers.push(id);
     myEmitter.emit('tracker', id);
     var buf = new Buffer.from([
         0x47, 0x49, 0x46, 0x38, 0x39, 0x61, 0x01, 0x00, 0x01, 0x00,
@@ -42,10 +45,10 @@ app.get("/:id/onepixel.png", (req, res) => {
 
 app.get("/updates", (req, res) => {
     res.setHeader("Content-Type", "text/event-stream");
-    myEmitter.on('tracker', (id) => {
+    myEmitter.on('tracker', (data) => {
         console.log({
-            id
+            data
         });
-        res.write("data: " + `${id}` + '\n\n');
+        res.write("data: " + `${data}` + '\n\n');
     });
 });
