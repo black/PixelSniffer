@@ -1,5 +1,4 @@
-let sse = new EventSource("http://localhost:1000/updates");
-console.log("loggind");
+let sse = new EventSource("https://https://pixelxniffer.herokuapp.com//updates");
 sse.onmessage = (res) => {
     console.log('new Data', res.data);
     $('#data-container').text(res.data);
